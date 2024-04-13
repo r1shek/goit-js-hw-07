@@ -14,22 +14,20 @@ createBtn.addEventListener('click', (event) => {
 
   if (input.value > 0 && input.value <= 100) {
     createBoxes(amount);
+    input.value = '';
   }
 });
 
 function createBoxes(amount) {
+  let htmlBoxes = '';
   let size = 30;
 
   for (let index = 0; index < amount; index++) {
-    const newDiv = document.createElement('div');
-    newDiv.classList.add('box');
-    newDiv.style.backgroundColor = getRandomHexColor();
-    newDiv.style.width = size + 'px';
-    newDiv.style.height = size + 'px';
-    divBoxes.appendChild(newDiv);
+    htmlBoxes += `<div style="background-color: ${getRandomHexColor()}; width: ${size}px; height: ${size}px;"></div>`;
 
     size += 10;
   }
+  divBoxes.innerHTML = htmlBoxes;
 }
 
 destroyBtn.addEventListener('click', destroyBoxes);
